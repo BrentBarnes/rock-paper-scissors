@@ -19,7 +19,12 @@
 
 
 // creates a computer selection and stores it as variable computerSelection
+    let playerScore = 0;
+    let computerScore = 0;
+    let scoreboard = `The score is currently: player has ${playerScore}. computer has ${computerScore}`
 const rpcOptions = ["rock", "paper", "scissors"]
+
+
 
 function generateComputerSelection() {
     let randomNumber = Math.floor((Math.random() * 3));
@@ -28,19 +33,69 @@ function generateComputerSelection() {
 }
 computerSelection = generateComputerSelection();
 
-
 // Creates a player input and stores it as variable playerSelection
 let playerInput = prompt("Please select rock, paper, or scissors: ");
 let playerSelection = playerInput.toLowerCase();
 
 
-// Just trying to pass computerSelection and playerSelection as parameters
-function playRound(playerSelection, computerSelection) {
-    let playerSelect = playerSelection;
-    let compSelect = generateComputerSelection();
-    // console.log(playerSelect)
-    // console.log(compSelect)
-    return compSelect;
-}
-// console.log(playRound());
 
+
+
+// takes playerSelection and computerSelection and plays RPC
+function playRound(playerSelection, computerSelection) {
+    
+    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+        return "You selected something other than rock, paper, or scissors."
+    }
+    else if (playerSelection === computerSelection) {
+        return "It's a draw!";
+    }
+    else if (playerSelection === "rock" && computerSelection === "scissors" || 
+        playerSelection === "paper" && computerSelection === "rock" ||
+        playerSelection === "scissors" && computerSelection === "paper") {
+            playerScore = playerScore + 1;
+            return `You win! ${playerSelection} beats ${computerSelection}.`
+        }
+    else {
+        computerScore = computerScore + 1;
+        return `You lose! ${computerSelection} beats ${playerSelection}.`
+    }
+}
+let result = playRound(playerSelection, computerSelection);
+
+playRound(playerSelection, computerSelection);
+
+// function incrementScore(result) {
+//     if (result === `You win! ${playerSelection} beats ${computerSelection}.`) {
+//         playerScore = playerScore + 1;
+//         return playerScore;
+//     }
+//     else if (result === `You lose! ${computerSelection} beats ${playerSelection}.`) {
+//         computerScore = computerScore + 1;
+//         return computerScore;
+//     }
+//     else {
+//         return "It's a draw!";
+//     }
+// }
+// let winnerPoint = increment(result);
+// console.log(incrementScore(result))
+
+
+// function game() {
+//     // let result = playRound(playerSelection, computerSelection);
+// //     let playerScore = 0;
+// //     let computerScore = 0;
+// //     let scoreboard = `The score is currently: player has ${playerScore}. computer has ${computerScore}`
+
+//     playRound(playerSelection, computerSelection);
+
+// }
+
+
+// console.log(playRound(playerSelection, computerSelection));
+// console.log(incrementScore(result))
+// console.log(game());
+
+console.log(playerScore);
+console.log(computerScore);
