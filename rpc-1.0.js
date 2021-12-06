@@ -18,84 +18,66 @@
 
 
 
-// creates a computer selection and stores it as variable computerSelection
     let playerScore = 0;
     let computerScore = 0;
-    let scoreboard = `The score is currently: player has ${playerScore}. computer has ${computerScore}`
-const rpcOptions = ["rock", "paper", "scissors"]
+    let scoreBoard = `The score is currently: player has ${playerScore}. computer has ${computerScore}`
+    const rpcOptions = ["rock", "paper", "scissors"]
 
-
-
-function generateComputerSelection() {
+// creates a computer selection and stores it as variable computerSelection
+function computerSelection() {
     let randomNumber = Math.floor((Math.random() * 3));
     let randomComputerSelection = rpcOptions[randomNumber];
     return randomComputerSelection;
 }
-computerSelection = generateComputerSelection();
-
-// Creates a player input and stores it as variable playerSelection
-let playerInput = prompt("Please select rock, paper, or scissors: ");
-let playerSelection = playerInput.toLowerCase();
 
 
+// Prompts user for seclection & converts it toLowerCase for case-insensitivity
+function playerSelection() {
+    let playerInput = prompt("Please select rock, paper, or scissors: ");
+    let playerSelectionToLowerCase = playerInput.toLowerCase();
+    return playerSelectionToLowerCase;
+}
 
 
 
-// takes playerSelection and computerSelection and plays RPC
+
+// Takes playerSelection and computerSelection and plays RPC logic.
+//also, iterates playerScore or computerScore + 1
 function playRound(playerSelection, computerSelection) {
-    
-    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+
+    let playerChoice = playerSelection();
+    let computerChoice = computerSelection();
+
+    if (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors") {
         return "You selected something other than rock, paper, or scissors."
     }
-    else if (playerSelection === computerSelection) {
-        return "It's a draw!";
+    else if (playerChoice === computerChoice) {
+        return `It's a draw!  ${scoreBoard}`;
     }
-    else if (playerSelection === "rock" && computerSelection === "scissors" || 
-        playerSelection === "paper" && computerSelection === "rock" ||
-        playerSelection === "scissors" && computerSelection === "paper") {
+    else if (playerChoice === "rock" && computerChoice === "scissors" || 
+    playerChoice === "paper" && computerChoice === "rock" ||
+    playerChoice === "scissors" && computerChoice === "paper") {
             playerScore = playerScore + 1;
-            return `You win! ${playerSelection} beats ${computerSelection}.`
+            return `You win! ${playerChoice} beats ${computerChoice}. ${scoreBoard}`
         }
     else {
         computerScore = computerScore + 1;
-        return `You lose! ${computerSelection} beats ${playerSelection}.`
+        return `You lose! ${computerChoice} beats ${playerChoice}. ${scoreBoard}`
     }
 }
-let result = playRound(playerSelection, computerSelection);
 
-playRound(playerSelection, computerSelection);
+//executes playRound and returns win/lose & point given to console
+function game() {
 
-// function incrementScore(result) {
-//     if (result === `You win! ${playerSelection} beats ${computerSelection}.`) {
-//         playerScore = playerScore + 1;
-//         return playerScore;
-//     }
-//     else if (result === `You lose! ${computerSelection} beats ${playerSelection}.`) {
-//         computerScore = computerScore + 1;
-//         return computerScore;
-//     }
-//     else {
-//         return "It's a draw!";
-//     }
-// }
-// let winnerPoint = increment(result);
-// console.log(incrementScore(result))
+    console.log(playRound(playerSelection, computerSelection));
+    console.log(playerScore);
+    console.log(computerScore);
 
+}
 
-// function game() {
-//     // let result = playRound(playerSelection, computerSelection);
-// //     let playerScore = 0;
-// //     let computerScore = 0;
-// //     let scoreboard = `The score is currently: player has ${playerScore}. computer has ${computerScore}`
-
-//     playRound(playerSelection, computerSelection);
-
-// }
-
-
-// console.log(playRound(playerSelection, computerSelection));
-// console.log(incrementScore(result))
-// console.log(game());
-
-console.log(playerScore);
-console.log(computerScore);
+//Plays game 5 times total and keeps score. Repeated instead of looped.
+game();
+game();
+game();
+game();
+game();
