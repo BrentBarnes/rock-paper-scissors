@@ -1,11 +1,33 @@
-# rock-paper-scissors
+# Rock Paper Scissors
 
-This project helped me and taught me a lot! I feel like it was an accurate culmination of everything we've learned so far. 
+The point of this project was to practice the fundamentals of javascript.
 
-I had issues because I wasn't paying the utmost attention when reading the learning articles. This led to much frustration when it came to undefined variables that were out of scope, and not knowing when I was declaring or calling functions. I reached out to The Odin Project discord for the first time during this project, and a very nice person helped me. While he didn't lead me to the answer, he suggested that I go back to the readings because he could sense some lack of fundamental understanding. Low and behold, I went back to the readings and watched a few YouTube videos about function and scope, and I was off to the races again! I came back after that, and I was able to finish the project and it felt great!
+### Functionality
+
+* Use Query Selectors for buttons
+* Use logic to determine who wins a round and who wins the game
+* Player plays against computer
+* First to five points wins
+* Replay game with the push of a button!
+
+### Screenshots
+<p float = 'left' >
+  <figure>
+    <figcaption>Start page</figcaption>
+    <img src="start.png" alt="start page" width="600" height="300">
+  </figure>
+  <figure>
+    <figcaption>Draw result</figcaption>
+    <img src="draw.png" alt="Draw result" width="600" height="300">
+  </figure>
+  <figure>
+    <figcaption>Replay option</figcaption>
+    <img src="replay.png" alt="replay option" width="600" height="300">
+  </figure>
+</p>
 
 
-Key Takeaways!
+### Key Takeaways
 
 1. Unless it's being declared for the first time, functions will always be called when using parenthesis, even when they are being stored in a variable.
 
